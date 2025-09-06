@@ -1,0 +1,38 @@
+parameters:
+    level: 9
+    paths:
+        - src
+
+    # Exclude paths  
+    excludePaths:
+        - vendor
+
+    # PHP version compatibility (PHP 8.4+)
+    phpVersion: 80400
+
+    # Cache directory for better performance
+    tmpDir: build/phpstan
+
+    # Report unmatched ignores for cleaner configuration
+    reportUnmatchedIgnoredErrors: true
+    
+    # Additional type checking
+    treatPhpDocTypesAsCertain: false
+
+    # Dead code detection rules  
+    unused_public:
+        methods: true
+        properties: true
+        constants: true
+        
+services:
+    # Enable unused code detection
+    -
+        class: TomasVotruba\UnusedPublic\Rules\UnusedPublicClassMethodRule
+        tags: [phpstan.rules.rule]
+    -
+        class: TomasVotruba\UnusedPublic\Rules\UnusedPublicPropertyRule
+        tags: [phpstan.rules.rule]
+    -
+        class: TomasVotruba\UnusedPublic\Rules\UnusedPublicClassConstRule
+        tags: [phpstan.rules.rule]

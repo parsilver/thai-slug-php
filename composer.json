@@ -1,48 +1,89 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "farzai/thai-slug",
+    "description": "The Thai text to URL-safe slug converter with multiple transliteration strategies",
     "keywords": [
-        ":vendor_name",
-        ":package_slug"
+        "php",
+        "thai",
+        "slug",
+        "transliteration",
+        "url",
+        "seo",
+        "phonetic",
+        "royal-institute"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/parsilver/thai-slug-php",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "parsilver",
+            "email": "parkorn@farzai.com",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^8.4"
+        "php": "^8.4",
+        "ext-iconv": "*",
+        "ext-mbstring": "*",
+        "ext-intl": "*"
     },
     "require-dev": {
-        :require_dev_testing,
-        :require_dev_codestyle,
-        "spatie/ray": "^1.28"
+        "laravel/pint": "^1.17",
+        "pestphp/pest": "^4.0",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan": "^2.0",
+        "phpstan/phpstan-strict-rules": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "rector/rector": "^1.2",
+        "shipmonk/phpstan-rules": "^4.2",
+        "tomasvotruba/unused-public": "^2.0"
+    },
+    "suggest": {
+        "ext-iconv": "For enhanced character transliteration support",
+        "ext-intl": "For advanced Unicode normalization features"
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src"
+            "Farzai\\ThaiSlug\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Farzai\\ThaiSlug\\Tests\\": "tests"
         }
     },
     "scripts": {
-        :scripts_testing,
-        :scripts_codestyle
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint --ansi",
+        "format-check": "vendor/bin/pint --test --ansi",
+        "analyse": "vendor/bin/phpstan analyse --memory-limit=1G --ansi",
+        "check-code": [
+            "@format-check",
+            "@analyse"
+        ],
+        "ci": [
+            "@check-code",
+            "@test-coverage"
+        ]
     },
     "config": {
         "sort-packages": true,
+        "optimize-autoloader": true,
+        "classmap-authoritative": true,
+        "apcu-autoloader": true,
         "allow-plugins": {
-            :plugins_testing,
+            "pestphp/pest-plugin": true,
             "phpstan/extension-installer": true
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "platform": {
+        "php": "8.4.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.x-dev"
+        }
+    }
 }
