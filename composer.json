@@ -54,6 +54,7 @@
     "scripts": {
         "test": "vendor/bin/pest",
         "test-coverage": "vendor/bin/pest --coverage",
+        "test-coverage-html": "vendor/bin/pest --coverage-html coverage",
         "format": "vendor/bin/pint --ansi",
         "format-check": "vendor/bin/pint --test --ansi",
         "analyse": "vendor/bin/phpstan analyse --memory-limit=1G --ansi",

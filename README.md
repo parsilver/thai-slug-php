@@ -17,9 +17,9 @@ A modern, high-performance PHP library for generating URL-friendly slugs from Th
 ## 📋 Requirements
 
 - PHP 8.4 or higher
-- mbstring extension
-- intl extension (recommended)
-- iconv extension
+- mbstring extension (required)
+- intl extension (required)
+- iconv extension (required)
 
 ## 📦 Installation
 
@@ -153,26 +153,6 @@ $slug = $thaiSlug->builder()
 - `Strategy::PHONETIC` - Default phonetic transliteration
 - `Strategy::ROYAL` - Royal Thai General System (RTGS) 
 - `Strategy::CUSTOM` - Custom transliteration rules
-
-## 🏗️ Architecture
-
-### SOLID Principles & Design Patterns
-
-This library follows modern software engineering principles:
-
-- **Strategy Pattern**: Interchangeable transliteration algorithms
-- **Builder Pattern**: Fluent configuration interface  
-- **Facade Pattern**: Simplified API for complex operations
-- **Dependency Injection**: Fully testable and extensible
-- **Enum-Based Configuration**: Type-safe strategy selection
-
-### Key Components
-
-- **ThaiSlug**: Main facade class providing simple API
-- **SlugBuilder**: Fluent builder for advanced configuration
-- **Strategy Enum**: Type-safe strategy selection
-- **Transliteration Strategies**: Pluggable transliteration algorithms
-- **Processing Pipeline**: Modular text processing workflow
 
 ## 🧪 Testing
 
